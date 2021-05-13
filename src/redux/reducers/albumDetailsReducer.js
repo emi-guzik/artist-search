@@ -1,32 +1,32 @@
 const DefaultState = {
   loading: false,
-  data: [],
+  data: {},
   errorMsg: '',
 };
 
-const ArtistsReducer = (state = DefaultState, action) => {
+const AlbumDetailsReducer = (state = DefaultState, action) => {
   switch (action.type) {
-    case 'ARTISTS_LOADING':
+    case 'ALBUM_DETAILS_LOADING':
       return {
         ...state,
         loading: true,
       };
-    case 'ARTISTS_SUCCESS':
+    case 'ALBUM_DETAILS_SUCCESS':
       return {
         ...state,
         loading: false,
-        data: action.payload.data,
+        data: action.payload,
         errorMsg: '',
       };
-    case 'ARTISTS_ERROR':
+    case 'ALBUM_DETAILS_ERROR':
       return {
         ...state,
         loading: false,
-        errorMsg: "can't fetch artists",
+        errorMsg: "can't fetch album details",
       };
     default:
       return state;
   }
 };
 
-export default ArtistsReducer;
+export default AlbumDetailsReducer;
