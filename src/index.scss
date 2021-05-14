@@ -81,9 +81,18 @@ body {
     }
 
     .artist-name {
-      padding: 15px;
-      border-bottom: 1px solid black;
-      margin: 0 30px;
+      padding: 20px 40px;
+      position: relative;
+
+      &:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        height: 1px;
+        width: calc(100% - 80px);
+        top: 60px;
+        background-color: $dark-brown;
+      }
 
       &:hover {
         background-color: $dark-brown;
@@ -117,15 +126,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-between;
-    padding: 10px;
+    padding: 30px;
   }
 }
 
 // Album
 .album-container {
   color: $green;
-  margin: 10px;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;

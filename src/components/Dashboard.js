@@ -1,4 +1,4 @@
-import { React, useState, useCallback } from 'react';
+import { React, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetAlbumFromArtist, GetArtists, GetAlbumDetails } from '../redux/actions';
 import debounce from 'lodash.debounce';
@@ -17,10 +17,7 @@ const Dashboard = () => {
   const [showTracks, setShowTracks] = useState(false);
   const [activeArtistName, setActiveArtistName] = useState('');
 
-  const debouncedSave = useCallback(
-    debounce((value) => dispatch(GetArtists(value)), 500),
-    []
-  );
+  const debouncedSave = useMemo(() => debounce((value) => dispatch(GetArtists(value)), 500), [dispatch]);
 
   const onSearch = (e) => {
     debouncedSave(e.target.value);
@@ -42,7 +39,7 @@ const Dashboard = () => {
 
   const onAlbumSelect = (album) => {
     dispatch(GetAlbumDetails(album.id));
-    
+
     setShowTracks(true);
   };
 
@@ -66,7 +63,7 @@ const Dashboard = () => {
 
       {showAlbumsList ? (
         <AlbumsList
-          activeArtist={activeArtistName}
+          artistName={activeArtistName}
           albumsList={albumsList.data}
           onAlbumSelect={(album) => onAlbumSelect(album)}
           error={albumsList.errorMsg}

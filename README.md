@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Run the app
 
+### `npm install`
+
 App uses Deezer API which doesn't allow CORS. To be able to run it locally, run local server first:
 
 ### `node src/server.js` 

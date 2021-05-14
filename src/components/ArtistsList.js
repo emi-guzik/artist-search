@@ -5,7 +5,7 @@ const ArtistsList = ({ artists, onArtistSelect, loading, error }) => {
   return (
     <div className="artists-list">
       {loading ? (
-        <div>Loading...</div>
+        <div className="loading-message">Loading...</div>
       ) : (
         <div>
           <div className="results-title">Search results</div>
@@ -17,10 +17,8 @@ const ArtistsList = ({ artists, onArtistSelect, loading, error }) => {
         </div>
       )}
 
-      {!_(error.length).isEmpty ? (<div>{error}</div>) : <div></div>}
+      {!_(error.length).isEmpty ? <div>{error}</div> : <div></div>}
     </div>
-
-    
   );
 };
 
