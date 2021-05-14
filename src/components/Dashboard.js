@@ -17,10 +17,10 @@ const Dashboard = () => {
   const [showTracks, setShowTracks] = useState(false);
   const [activeArtistName, setActiveArtistName] = useState('');
 
-  const debouncedSave = useMemo(() => debounce((value) => dispatch(GetArtists(value)), 500), [dispatch]);
+  const debouncedSearch = useMemo(() => debounce((value) => dispatch(GetArtists(value)), 500), [dispatch]);
 
   const onSearch = (e) => {
-    debouncedSave(e.target.value);
+    debouncedSearch(e.target.value);
     if (e.target.value.length > 0) {
       setShowArtistsList(true);
     } else {
